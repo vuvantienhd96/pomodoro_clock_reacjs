@@ -1,0 +1,54 @@
+/* Mixins
+  ============================================ */
+  @mixin mq($from) {
+    @media (max-width: $from) {
+      @content;
+    }
+  }
+  
+  @mixin minW($from) {
+    @media (min-width: $from) {
+      @content;
+    }
+  }
+  //Content
+.pomodoro-clock {
+
+  &__header {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  &__header-name {
+
+    text-transform: capitalize;
+    display: inline-block;
+    position: relative;
+    padding: 0px 10px;
+    background-color: #0e9aa7;
+
+    &::before {
+      content: '';
+      height: 3px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      border-top: 1px solid #fff;
+      z-index: -1;
+    }
+  }
+
+  @include minW('768px'){
+    width: 768px;
+    margin: 0 auto;
+    &__header-name {
+      &::before {
+        top: 50%;
+        left: -50%;
+        width: 200%;
+      }
+    }
+  }
+  
+}
